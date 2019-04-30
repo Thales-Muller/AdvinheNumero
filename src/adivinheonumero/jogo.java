@@ -23,6 +23,8 @@ public class jogo {
         int n = 0, a = 0, cont = 0;
         Boolean vitoria = true;
 
+        n = r.nextInt(50) + 1;
+        
         try {
             String Ad = JOptionPane.showInputDialog(null, "Pensei em um número de 1 a 50. Qual é?(digite 0  para desistir)");
             a = Integer.parseInt(Ad);
@@ -30,14 +32,19 @@ public class jogo {
             JOptionPane.showMessageDialog(null, "Valor invalido!\nO programa sera fechado");
             return;
         }
-        n = r.nextInt(50) + 1;
+        
         while (vitoria) {
             System.out.println(n);
             if (a == 0) {
                 vitoria = false;
             } else if (a == n) {
-                JOptionPane.showMessageDialog(null, "Você acertou o número " + n + " depois de " + cont + " tentativa(s).");
-                vitoria = false;
+                if (cont == 0) {
+                    JOptionPane.showMessageDialog(null, "Incível!!!\n Você acertou de primeira!");
+                    vitoria = false;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Você acertou o número " + n + " depois de " + cont + " tentativa(s).");
+                    vitoria = false;
+                }
             } else if (a > n) {
                 try {
                     String Ad = JOptionPane.showInputDialog(null, "Meu número é MENOR que este...Tente de novo.");
@@ -47,7 +54,7 @@ public class jogo {
                     return;
                 }
                 cont++;
-            }else if (a < n){
+            } else if (a < n) {
                 try {
                     String Ad = JOptionPane.showInputDialog(null, "Meu número é MAIOR que este...Tente de novo.");
                     a = Integer.parseInt(Ad);
